@@ -5,7 +5,7 @@ from nltk.sentiment import SentimentIntensityAnalyzer
 nltk.download('vader_lexicon')
 
 
-def scrape_news(url):
+def scrape_news(url: str) -> []:
     """Scrapes the top headlines from a news website."""
     try:
         response = requests.get(url, timeout=10)
@@ -20,7 +20,7 @@ def scrape_news(url):
     return news_list
 
 
-def analyze_sentiment(news_list):
+def analyze_sentiment(news_list) -> [int]:
     """Analyzes the sentiment of the top headlines from a news website."""
     analyzer = SentimentIntensityAnalyzer()
     sentiments = []
@@ -34,7 +34,7 @@ def analyze_sentiment(news_list):
     return sentiments
 
 
-def sum_sentiment_scores(sentiments):
+def sum_sentiment_scores(sentiments: [int]):
     """Sums the values in the 'neg', 'neu', and 'pos' columns of the sentiment scores."""
     if len(sentiments) != 0:
         neg_sum = 0
@@ -81,6 +81,7 @@ if __name__ == "__main__":
         print("===== " + url + " =====")
         news_list = scrape_news(url)
         sentiments = analyze_sentiment(news_list)
+        print(type(news_list))
         neg_sum, neu_sum, pos_sum = sum_sentiment_scores(sentiments)
 
         print("    Negative sentiment:", neg_sum)
