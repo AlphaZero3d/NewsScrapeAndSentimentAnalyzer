@@ -50,18 +50,18 @@ def sum_sentiment_scores(sentiments: [int]):
     return 0, 0, 0
 
 
-def get_sentiment(urls):
-    for url in urls:
-        print("===== " + url + " =====")
-        news_list = scrape_news(url)
-        sentiments = analyze_sentiment(news_list)
-        print(type(news_list))
-        neg_sum, neu_sum, pos_sum = sum_sentiment_scores(sentiments)
+def get_sentiment(url):
+    """Takes a url and processes its sentiment"""
+    url = url.strip()
+    print("===== " + url + " =====")
+    news_list = scrape_news(url)
+    sentiments = analyze_sentiment(news_list)
+    neg_sum, neu_sum, pos_sum = sum_sentiment_scores(sentiments)
 
-        print("    Negative sentiment:", neg_sum)
-        print("    Neutral sentiment:", neu_sum)
-        print("    Positive sentiment:", pos_sum)
-        print("    Positive - Negative Difference: ", pos_sum-neg_sum, "\n")
+    print("    Negative sentiment:", neg_sum)
+    print("    Neutral sentiment:", neu_sum)
+    print("    Positive sentiment:", pos_sum)
+    print("    Positive - Negative Difference: ", pos_sum-neg_sum, "\n")
 
 
 if __name__ == "__main__":
