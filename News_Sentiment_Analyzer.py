@@ -21,7 +21,9 @@ def scrape_news(url: str) -> []:
 
 
 def analyze_sentiment(news_list) -> [int]:
-    """Analyzes the sentiment of the top headlines from a news website."""
+    """Analyzes the sentiment of the top headlines from a news website.
+    If news_list is empty, returns sentiments of 0
+    """
     analyzer = SentimentIntensityAnalyzer()
     sentiments = []
     if len(news_list) != 0:
@@ -50,6 +52,20 @@ def sum_sentiment_scores(sentiments: [int]):
 
 # userterm = input()
 
+def get_sentiment(urls):
+    for url in urls:
+        print("===== " + url + " =====")
+        news_list = scrape_news(url)
+        sentiments = analyze_sentiment(news_list)
+        print(type(news_list))
+        neg_sum, neu_sum, pos_sum = sum_sentiment_scores(sentiments)
+
+        print("    Negative sentiment:", neg_sum)
+        print("    Neutral sentiment:", neu_sum)
+        print("    Positive sentiment:", pos_sum)
+        print("    Positive - Negative Difference: ", pos_sum-neg_sum, "\n")
+
+
 
 if __name__ == "__main__":
     urls = [
@@ -67,24 +83,3 @@ if __name__ == "__main__":
         "https://news.google.com/rss/search?q=when:24h+allinurl:bloomberg.com",
         "https://rss.nytimes.com/services/xml/rss/nyt/MostViewed.xml",
     ]
-
-    print("===== " + urls[8] + " =====")
-    new_list = scrape_news(urls[8])
-    sentiments = analyze_sentiment(new_list)
-    neg_sum, neu_sum, pos_sum = sum_sentiment_scores(sentiments)
-    print("    Negative sentiment:", neg_sum)
-    print("    Neutral sentiment:", neu_sum)
-    print("    Positive sentiment:", pos_sum)
-    print("    Positive - Negative Difference: ", pos_sum-neg_sum, "\n")
-
-    for url in urls:
-        print("===== " + url + " =====")
-        news_list = scrape_news(url)
-        sentiments = analyze_sentiment(news_list)
-        print(type(news_list))
-        neg_sum, neu_sum, pos_sum = sum_sentiment_scores(sentiments)
-
-        print("    Negative sentiment:", neg_sum)
-        print("    Neutral sentiment:", neu_sum)
-        print("    Positive sentiment:", pos_sum)
-        print("    Positive - Negative Difference: ", pos_sum-neg_sum, "\n")
