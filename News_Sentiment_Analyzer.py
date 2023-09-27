@@ -7,16 +7,15 @@ nltk.download('vader_lexicon')
 
 def scrape_news(url: str) -> []:
     """Scrapes the top headlines from a news website."""
+
     try:
         response = requests.get(url, timeout=10)
     except requests.exceptions.Timeout as err:
         print("Error Recieved: ", err)
         return []
-    print(response)
+
     soup = BeautifulSoup(response.content, "xml")
-    # print(soup)
     news_list = soup.find_all("item")
-    # print(news_list)
     return news_list
 
 
@@ -37,7 +36,8 @@ def analyze_sentiment(news_list) -> [int]:
 
 
 def sum_sentiment_scores(sentiments: [int]):
-    """Sums the values in the 'neg', 'neu', and 'pos' columns of the sentiment scores."""
+    """Sums the values in the 'neg', 'neu', and 'pos'
+    columns of the sentiment scores."""
     if len(sentiments) != 0:
         neg_sum = 0
         neu_sum = 0
@@ -49,8 +49,6 @@ def sum_sentiment_scores(sentiments: [int]):
         return neg_sum, neu_sum, pos_sum
     return 0, 0, 0
 
-
-# userterm = input()
 
 def get_sentiment(urls):
     for url in urls:
@@ -64,7 +62,6 @@ def get_sentiment(urls):
         print("    Neutral sentiment:", neu_sum)
         print("    Positive sentiment:", pos_sum)
         print("    Positive - Negative Difference: ", pos_sum-neg_sum, "\n")
-
 
 
 if __name__ == "__main__":
