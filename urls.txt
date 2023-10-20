@@ -1,0 +1,14 @@
+https://news.google.com/news/rss
+https://news.google.com/rss/search?q=stocks&hl=en-US&gl=US&ceid=US%3Aen
+https://news.google.com/rss/search?q=bonds&hl=en-US&gl=US&ceid=US%3Aen
+https://news.google.com/rss/search?q=earnings&hl=en-US&gl=US&ceid=US%3Aen
+https://news.google.com/rss/search?q=netflix&hl=en-US&gl=US&ceid=US%3Aen
+https://www.npr.org/sections/news/
+http://feeds.bbci.co.uk/news/rss.xml
+https://www.ft.com/news-feed/rss.xml
+https://www.nasdaq.com/feed/rssoutbound?category=Stocks/rss.xml
+https://news.google.com/rss/search?q=when:24h+allinurl:bloomberg.com&hl=en-US&gl=US&ceid=US:en
+https://news.google.com/rss/search?gl=US&hl=en-US&q=Tesla,+Inc.&ceid=US:en
+https://news.google.com/rss/search?q=when:24h+allinurl:bloomberg.com
+https://rss.nytimes.com/services/xml/rss/nyt/MostViewed.xml
+
